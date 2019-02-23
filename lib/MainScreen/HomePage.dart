@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
      // var status=bean['data']['_req']['header']['user-agent'];
       // return result.toString();
     }catch (e){
-       print("失败原因${e.toString()}");
+       print("失败原因是${e.toString()}");
     }
   }
 
