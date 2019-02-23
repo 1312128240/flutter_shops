@@ -60,7 +60,6 @@ class _MyAppState extends State<MyApp> {
      HomePage(),CategoryPage(),ShoppingCar(),MyPage(),
    ];
 
-  
    _bottomList()=>[
      BottomNavigationBarItem(
        title: Text("首页"),
