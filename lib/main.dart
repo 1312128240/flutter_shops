@@ -4,7 +4,7 @@ import 'package:flutter_shop/MainScreen/HomePage.dart';
 import 'package:flutter_shop/MainScreen/CategoryPage.dart';
 import 'package:flutter_shop/MainScreen/ShoppingCar.dart';
 import 'package:flutter_shop/MainScreen/MyPage.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main()=>runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -19,14 +19,12 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     currenIndex=0;
-
   }
 
   @override
   Widget build(BuildContext context) {
 
     _getData();
-
     return Container(
         child: MaterialApp(
            debugShowCheckedModeBanner: false,
@@ -45,7 +43,6 @@ class _MyAppState extends State<MyApp> {
                     currenIndex=i;
                   });
                 },
-
             ),
 
           ),
