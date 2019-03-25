@@ -4,8 +4,26 @@ import 'package:flutter_shop/MainScreen/HomePage.dart';
 import 'package:flutter_shop/MainScreen/CategoryPage.dart';
 import 'package:flutter_shop/MainScreen/ShoppingCar.dart';
 import 'package:flutter_shop/MainScreen/MyPage.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-void main()=>runApp(MyApp());
+import 'package:flutter_shop/bean/category.dart';
+import 'package:provide/provide.dart';
+import 'package:flutter_shop/provider/CountProvide.dart';
+import 'package:flutter_shop/provider/IsVisable.dart';
+import 'package:flutter_shop/provider/RightCategoryProvider.dart';
+import 'package:flutter_shop/bean/RightCategory.dart';
+//入口初始化provider
+
+
+
+void main(){
+      List<BxMallSubDto> bxMallSubDto=[];
+      List<RightCategoryData> rightList=[];
+     var providers= Providers()
+    ..provide(Provider.function((context)=>new Count(num: 0,num2: 0,bxMallSubDto:bxMallSubDto)))
+    ..provide(Provider.function((context)=>IsVisable(visable: false)))
+    ..provide(Provider.function((context)=>RightCategoryProvider(rightList,0,'4','')));
+     runApp(ProviderNode(child: MyApp(), providers: providers));
+  //runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -32,8 +50,14 @@ class _MyAppState extends State<MyApp> {
              primaryColor: Colors.pink,
            ),
           home: Scaffold(
-            appBar: AppBar(title: Text("AAAA"),),
-            body: _ActivityList()[currenIndex],
+           // appBar: AppBar(title: Text("百姓生活"),),
+           // body: _ActivityList()[currenIndex],
+
+            body:IndexedStack(
+              children: _ActivityList(),
+              index: currenIndex,
+            ),
+
             bottomNavigationBar: BottomNavigationBar(
                 items: _bottomList(),
                 type: BottomNavigationBarType.fixed,
@@ -53,7 +77,7 @@ class _MyAppState extends State<MyApp> {
    void _getData(){
 
    }
-   _ActivityList()=>[
+   _ActivityList<Widget>()=>[
      HomePage(),CategoryPage(),ShoppingCar(),MyPage(),
    ];
 
